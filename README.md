@@ -13,6 +13,8 @@
 
 
 
+Controller With endpoints:
+
 Rental Offer Controller
  1. GET /all-rental-offer/{rentalId}
  • Retrieves a list of all rental offers for a specific property, providing detailed information about each offer.
@@ -67,4 +69,28 @@ Rental Property Controller
  • Filters rental properties based on their specific location.
  8. GET /filter/unit-type
  • Filters rental properties based on their unit type (e.g., Shop, Office).
+
+
+Service :
+• Rental Offer service
+• Rental Contract service
+• Rental Propertyt service
+
+
+Models :
+• Rental Offer 
+• Rental Contract
+• Rental 
+
+DTO classes 
+• DetailRentalOfferDTO 
+• RentalContractDTO
+• RentalDTO
+
+
+
+
+
+
+
 
