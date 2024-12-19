@@ -185,6 +185,7 @@ public class RentalOfferService {
 
     // Final acceptance or rejection of the negotiation in favor of the owner's offer
 
+
     public DetailRentalOfferDTO ownerAcceptOrRejectOffer(Integer rentalOfferId, Boolean accepted) {
         RentalOffer rentalOffer = rentalOfferRepository.findRentalOfferById(rentalOfferId);
         Rental rental = rentalOffer.getRental();            rejectOtherOffers(rental.getId(),rentalOffer.getId());
@@ -193,11 +194,18 @@ public class RentalOfferService {
             throw new ApiException("Invalid status ");
         }
         if (accepted) {
-            rentalOffer.setStatus("Accepted by owner");
-            rental.setAvaiilableStatus("Occupied");
-            rentalOffer.setOwnerAcceptedIndividualProposal(true);
-            rentalOffer.setRentalAmount(rentalOffer.getIndividualProposedRent());
-            rentalOffer.setRentalAmount(rentalOffer.getOwnerProposedRent());
+            if (rentalOffer.getStatus().equals("Pending by owner")) {
+                rentalOffer.setStatus("Accepted by owner");
+                rental.setAvaiilableStatus("Occupied");
+                rentalOffer.setOwnerAcceptedIndividualProposal(true);
+                rentalOffer.setRentalAmount(rentalOffer.getIndividualProposedRent());
+            } else if (rentalOffer.getStatus().equals("Accepted by individual")) {
+                rentalOffer.setStatus("Accepted by owner");
+                rental.setAvaiilableStatus("Occupied");
+                rentalOffer.setIndividualAcceptedOwnerProposed(true);
+                rentalOffer.setRentalAmount(rentalOffer.getOwnerProposedRent());
+            }
+            
         }else {
             rentalOffer.setStatus("Rejected");
         }
