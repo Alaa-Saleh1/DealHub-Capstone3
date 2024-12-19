@@ -28,8 +28,6 @@ Rental Offer Controller
  • Allows the owner to respond to a rental offer with a new proposed rent.
  7. PUT /user-offer/rental-offer-id/{rentalOfferId}
  • Enables the tenant to respond to the owner’s proposed offer with a counteroffer.
-- FranchiseRepository
-- FranchiseContractRepository
 8. PUT /individual-accept-reject/rental-offer-id/{rentalOfferId}
  • Allows the tenant to either accept or reject the owner’s proposed offer.
  9. PUT /owner-accept-reject/rental-offer-id/{rentalOfferId}
