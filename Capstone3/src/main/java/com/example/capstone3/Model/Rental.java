@@ -49,14 +49,9 @@ public class Rental {
     @Column(columnDefinition = "varchar(8) default 'Yearly'")
     private String rentalType;
 
-//    @Positive(message = "Rental duration must be positive number")
-//    private Integer rentalDuration;
 
     @PositiveOrZero(message = "Annul rent must be zero or positive.")
     private Double annulRent;
-
-//    @NotEmpty(message = "Lease term is required.")
-//    private String leaseTerm; // e.g., "1 year", "6 months"
 
 
     // Unit Details (Unit Specific Information)
